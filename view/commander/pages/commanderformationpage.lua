@@ -58,6 +58,9 @@ function slot0.OnInit(slot0)
 	onButton(slot0, slot0.recordPanel:Find("back"), function ()
 		uv0:CloseRecordPanel()
 	end, SFX_PANEL)
+	setText(slot0:findTF("desc/frame/atttr_panel/abilitys/title/Text"), i18n("commander_subtile_ablity"))
+	setText(slot0:findTF("desc/frame/atttr_panel/talents/title/Text"), i18n("commander_subtile_talent"))
+	setText(slot0:findTF("record_panel/current/title/Text"), i18n("commander_formation_prefab_fleet"))
 end
 
 function slot0.Update(slot0, slot1, slot2)

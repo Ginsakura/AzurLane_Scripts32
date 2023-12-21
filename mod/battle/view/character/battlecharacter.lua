@@ -939,9 +939,6 @@ function slot6.AddModel(slot0, slot1)
 	end
 
 	slot0:SetBoneList()
-
-	slot0._tf.position = slot0._unitData:GetPosition()
-
 	slot0:UpdateMatrix()
 	slot0._unitData:ActiveCldBox()
 

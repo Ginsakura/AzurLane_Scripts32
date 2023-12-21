@@ -183,21 +183,32 @@ function slot9.UpdateHP(slot0, slot1, slot2)
 		return 0
 	end
 
+	slot8 = slot2.isShare
 	slot11 = slot2.font
 	slot12 = slot2.cldPos
 	slot13 = slot2.incorrupt
-	slot14 = slot1
+	slot14 = nil
 
 	if not slot2.isHeal then
 		slot15 = {
 			damage = -slot1,
-			isShare = slot2.isShare,
+			isShare = slot8,
 			miss = slot2.isMiss,
 			cri = slot2.isCri,
 			damageSrc = slot2.srcID,
 			damageAttr = slot2.attr,
 			damageReason = slot2.damageReason
 		}
+
+		if not slot8 then
+			slot0:TriggerBuff(uv0.BuffEffectType.ON_BEFORE_TAKE_DAMAGE, slot15)
+
+			if slot15.capFlag then
+				slot0:TriggerBuff(uv0.BuffEffectType.ON_DAMAGE_FIX, slot15)
+			end
+		end
+
+		slot14 = -slot15.damage
 
 		slot0:TriggerBuff(uv0.BuffEffectType.ON_TAKE_DAMAGE, slot15)
 
@@ -217,6 +228,7 @@ function slot9.UpdateHP(slot0, slot1, slot2)
 			return 0
 		end
 	else
+		slot14 = slot1
 		slot15 = {
 			damage = slot1,
 			isHeal = slot7,
@@ -285,7 +297,7 @@ function slot9.DeacActionClear(slot0)
 	slot0._aliveState = false
 
 	uv0.Spirit(slot0)
-	uv0.Whosyourdaddy(slot0)
+	uv0.AppendInvincible(slot0)
 	slot0:DeadActionEvent()
 end
 
@@ -1610,7 +1622,11 @@ function slot9.GetAntiSubState(slot0)
 end
 
 function slot9.UpdateBlindInvisibleBySpectre(slot0)
-	slot0:SetBlindInvisible(slot0:IsSpectre())
+	slot1, slot2 = slot0:IsSpectre()
+
+	if slot2 <= uv0.SPECTRE_UNIT_TYPE and slot2 ~= uv0.VISIBLE_SPECTRE_UNIT_TYPE then
+		slot0:SetBlindInvisible(true)
+	end
 end
 
 function slot9.SetBlindInvisible(slot0, slot1)

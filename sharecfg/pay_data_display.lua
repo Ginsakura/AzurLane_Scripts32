@@ -58,6 +58,8 @@ pg.pay_data_display = setmetatable({
 		58,
 		59,
 		60,
+		61,
+		62,
 		1000,
 		1001,
 		1002,
@@ -91,6 +93,7 @@ pg.pay_data_display = setmetatable({
 		2017,
 		2018,
 		2019,
+		2020,
 		5001,
 		5002,
 		5003,
@@ -5523,6 +5526,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_198",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.zuanshi158",
@@ -5577,32 +5581,6 @@ pg.base.pay_data_display = {
 				20
 			}
 		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					14
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
-			}
-		},
 		display = {
 			{
 				2,
@@ -5646,6 +5624,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_328",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.zuanshi159",
@@ -5695,32 +5674,6 @@ pg.base.pay_data_display = {
 				30
 			}
 		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					14
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
-			}
-		},
 		display = {
 			{
 				2,
@@ -5764,6 +5717,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "fudai8",
 		skin_inquire_relation = 69984,
 		id_str = "com.bilibili.blhx.zuanshi160",
@@ -5808,32 +5762,6 @@ pg.base.pay_data_display = {
 				100
 			}
 		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					14
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
-			}
-		},
 		display = {
 			{
 				2,
@@ -5858,6 +5786,232 @@ pg.base.pay_data_display = {
 			{
 				2,
 				40998,
+				1
+			}
+		}
+	},
+	[61] = {
+		subject = "绚烂缤纷夜福袋·I",
+		limit_group = 0,
+		descrip_extra = "*福袋将发送到邮箱，请注意查收。\n*重复获得已拥有的换装时，则自动置换成等价的钻石。",
+		type = 1,
+		limit_arg = 1,
+		name = "绚烂缤纷夜福袋·I",
+		name_display = "绚烂缤纷夜福袋·I",
+		type_order = 2,
+		extra_gem = 0,
+		id = 61,
+		money = 198,
+		tag = 2,
+		gem = 0,
+		limit_type = 2,
+		picture = "fudai9",
+		skin_inquire_relation = 86200,
+		id_str = "com.bilibili.blhx.zuanshi161",
+		first_pay_double = 0,
+		extra_service = 3,
+		descrip = "可获得一件角色换装，2024钻，和大量其他奖励",
+		airijp_id = "com.yostarjp.azurlane.diamond147",
+		extra_service_item = {
+			{
+				2,
+				86200,
+				1
+			},
+			{
+				1,
+				14,
+				2024
+			},
+			{
+				2,
+				42056,
+				2
+			},
+			{
+				2,
+				15008,
+				50
+			},
+			{
+				2,
+				20001,
+				20
+			},
+			{
+				2,
+				15003,
+				10
+			},
+			{
+				1,
+				6,
+				100
+			}
+		},
+		time = {
+			{
+				{
+					2023,
+					12,
+					21
+				},
+				{
+					0,
+					0,
+					0
+				}
+			},
+			{
+				{
+					2024,
+					1,
+					3
+				},
+				{
+					23,
+					59,
+					59
+				}
+			}
+		},
+		display = {
+			{
+				2,
+				86200,
+				1
+			},
+			{
+				1,
+				14,
+				2024
+			},
+			{
+				2,
+				42056,
+				2
+			}
+		},
+		sub_display = {},
+		ignorePlatform = {},
+		limit_args = {},
+		drop_item = {
+			{
+				2,
+				81200,
+				1
+			}
+		}
+	},
+	[62] = {
+		subject = "2023泳装礼盒·I复刻",
+		limit_group = 0,
+		descrip_extra = "*礼盒将发送到邮箱，请注意查收。\n*重复获得已拥有的换装时，则自动置换成等价的钻石。",
+		type = 1,
+		limit_arg = 1,
+		name = "2023泳装礼盒·I复刻",
+		name_display = "2023泳装礼盒·I复刻",
+		type_order = 2,
+		extra_gem = 0,
+		id = 62,
+		money = 198,
+		tag = 2,
+		gem = 0,
+		limit_type = 2,
+		picture = "lihe10_l",
+		skin_inquire_relation = 69922,
+		id_str = "com.bilibili.blhx.zuanshi162",
+		first_pay_double = 0,
+		extra_service = 3,
+		descrip = "可获得一件角色换装，2023钻，和大量其他奖励",
+		airijp_id = "com.yostarjp.azurlane.diamond148",
+		extra_service_item = {
+			{
+				2,
+				69922,
+				1
+			},
+			{
+				1,
+				14,
+				2023
+			},
+			{
+				2,
+				42046,
+				2
+			},
+			{
+				2,
+				15008,
+				50
+			},
+			{
+				2,
+				20001,
+				20
+			},
+			{
+				2,
+				15003,
+				10
+			},
+			{
+				1,
+				6,
+				100
+			}
+		},
+		time = {
+			{
+				{
+					2023,
+					12,
+					21
+				},
+				{
+					0,
+					0,
+					0
+				}
+			},
+			{
+				{
+					2024,
+					1,
+					3
+				},
+				{
+					23,
+					59,
+					59
+				}
+			}
+		},
+		display = {
+			{
+				2,
+				69922,
+				1
+			},
+			{
+				1,
+				14,
+				2023
+			},
+			{
+				2,
+				42046,
+				2
+			}
+		},
+		sub_display = {},
+		ignorePlatform = {},
+		limit_args = {},
+		drop_item = {
+			{
+				2,
+				40922,
 				1
 			}
 		}
@@ -8321,6 +8475,114 @@ pg.base.pay_data_display = {
 			}
 		}
 	},
+	[2020] = {
+		subject = "冬至礼包(2023冬)",
+		limit_group = 0,
+		descrip_extra = "*礼包将发送到邮箱，请注意查收。",
+		type = 0,
+		limit_arg = 1,
+		name = "冬至礼包(2023冬)",
+		name_display = "冬至礼包(2023冬)",
+		type_order = 0,
+		extra_gem = 0,
+		id = 2020,
+		money = 258,
+		tag = 2,
+		gem = 0,
+		limit_type = 2,
+		picture = "dongzhi3",
+		skin_inquire_relation = 0,
+		id_str = "com.bilibili.blhx.libao111",
+		first_pay_double = 0,
+		extra_service = 3,
+		descrip = "可获得3880钻，和特装型布里MKIII*1和其他奖励",
+		airijp_id = "com.yostarjp.azurlane.package111",
+		extra_service_item = {
+			{
+				1,
+				14,
+				3880
+			},
+			{
+				4,
+				100021,
+				1
+			},
+			{
+				4,
+				100011,
+				2
+			},
+			{
+				2,
+				15012,
+				150
+			},
+			{
+				2,
+				16502,
+				60
+			},
+			{
+				2,
+				30113,
+				150
+			}
+		},
+		time = {
+			{
+				{
+					2023,
+					12,
+					21
+				},
+				{
+					0,
+					0,
+					0
+				}
+			},
+			{
+				{
+					2024,
+					1,
+					3
+				},
+				{
+					23,
+					59,
+					59
+				}
+			}
+		},
+		display = {
+			{
+				1,
+				14,
+				3880
+			},
+			{
+				4,
+				100021,
+				1
+			},
+			{
+				4,
+				100011,
+				2
+			}
+		},
+		sub_display = {},
+		ignorePlatform = {},
+		limit_args = {},
+		drop_item = {
+			{
+				2,
+				40029,
+				1
+			}
+		}
+	},
 	[5001] = {
 		subject = "促销礼包I",
 		limit_group = 0,
@@ -8336,6 +8598,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day1",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao201",
@@ -8353,32 +8616,6 @@ pg.base.pay_data_display = {
 				1,
 				14,
 				60
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					14
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {
@@ -8419,6 +8656,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day2",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao202",
@@ -8431,32 +8669,6 @@ pg.base.pay_data_display = {
 				1,
 				14,
 				200
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					15
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {
@@ -8492,6 +8704,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day3",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao203",
@@ -8509,32 +8722,6 @@ pg.base.pay_data_display = {
 				2,
 				30114,
 				5
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					16
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {
@@ -8575,6 +8762,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day4",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao204",
@@ -8592,32 +8780,6 @@ pg.base.pay_data_display = {
 				1,
 				14,
 				60
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					17
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {
@@ -8658,6 +8820,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day5",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao205",
@@ -8670,32 +8833,6 @@ pg.base.pay_data_display = {
 				2,
 				16502,
 				60
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					18
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {
@@ -8731,6 +8868,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day6",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao206",
@@ -8748,32 +8886,6 @@ pg.base.pay_data_display = {
 				2,
 				15003,
 				5
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					19
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {
@@ -8814,6 +8926,7 @@ pg.base.pay_data_display = {
 		tag = 2,
 		gem = 0,
 		limit_type = 2,
+		time = "stop",
 		picture = "pack_day7",
 		skin_inquire_relation = 0,
 		id_str = "com.bilibili.blhx.libao207",
@@ -8831,32 +8944,6 @@ pg.base.pay_data_display = {
 				1,
 				14,
 				60
-			}
-		},
-		time = {
-			{
-				{
-					2023,
-					12,
-					20
-				},
-				{
-					0,
-					0,
-					0
-				}
-			},
-			{
-				{
-					2023,
-					12,
-					21
-				},
-				{
-					23,
-					59,
-					59
-				}
 			}
 		},
 		display = {

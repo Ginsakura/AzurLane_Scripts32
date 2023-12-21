@@ -124,6 +124,7 @@ function slot0.playAnim(slot0, slot1)
 end
 
 function slot0.didEnter(slot0)
+	setActive(slot0.spriteMask, true)
 	onButton(slot0, slot0._tf, function ()
 		uv0:checkPaintingRes(function ()
 			if uv0.tweeningId then
@@ -281,6 +282,7 @@ function slot0.displayAwards(slot0)
 end
 
 function slot0.willExit(slot0)
+	setActive(slot0.spriteMask, false)
 	pg.UIMgr.GetInstance():UnblurPanel(slot0._tf)
 
 	if slot0.title ~= uv0.TITLE.SHIP then
