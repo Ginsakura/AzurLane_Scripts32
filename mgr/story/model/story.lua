@@ -47,7 +47,7 @@ function slot0.Ctor(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot7 = slot3 or {}
 	slot8 = {}
 
-	for slot12, slot13 in ipairs(slot1.scripts) do
+	for slot12, slot13 in ipairs(slot1.scripts or {}) do
 		slot16 = uv0.GetStoryStepCls(slot13.mode or slot0.mode).New(slot13)
 
 		slot16:SetId(slot12)
