@@ -58,9 +58,12 @@ function slot0.didEnter(slot0)
 		uv0:SetActiveBubble(not uv0.chatActive)
 	end)
 
-	slot3 = pg.item_data_statistics[id2ItemId(slot0.shop:getResId())] and slot2.icon
+	slot2 = getDropIcon({
+		type = DROP_TYPE_RESOURCE,
+		id = slot0.shop:getResId()
+	})
 
-	slot0.contentText:AddSprite(slot3, LoadSprite(slot3, ""))
+	slot0.contentText:AddSprite(slot2, LoadSprite(slot2, ""))
 	slot0:UpdateView()
 	slot0:ShowEnterMsg()
 	pg.UIMgr.GetInstance():OverlayPanel(slot0._tf)

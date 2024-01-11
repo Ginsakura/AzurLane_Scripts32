@@ -13,7 +13,7 @@ function slot0.init(slot0)
 	slot0.oilbubbleTF = slot0:findTF("canteen/bubble", slot0.resourcesTF)
 	slot0.goldbubbleTF = slot0:findTF("merchant/bubble", slot0.resourcesTF)
 	slot0.classbubbleTF = slot0:findTF("class/bubble", slot0.resourcesTF)
-	slot0.classbubbleTF:Find("icon"):GetComponent(typeof(Image)).sprite = LoadSprite(pg.item_data_statistics[getProxy(NavalAcademyProxy):GetClassVO():GetResourceType()].icon)
+	slot0.classbubbleTF:Find("icon"):GetComponent(typeof(Image)).sprite = LoadSprite(Item.getConfigData(getProxy(NavalAcademyProxy):GetClassVO():GetResourceType()).icon)
 	slot0.projectContainer = slot0:findTF("main/content", slot0.frame)
 	slot0.items = {
 		CommissionInfoEventItem.New(slot0:findTF("frame/main/content/event"), slot0),

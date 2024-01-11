@@ -2351,18 +2351,18 @@ function slot0.showUnlockPanel(slot0)
 	setActive(slot0.unlockPanel, true)
 
 	slot1 = slot0.contextData.shipBluePrintVO.id
-	slot2 = slot0.contextData.shipBluePrintVO:getUnlockItem()
-	slot3 = slot0.contextData.shipBluePrintVO:getShipVO()
-	slot4 = slot3:getPainting()
-	slot5 = slot0.unlockPanel:Find("window/content")
-
-	GetImageSpriteFromAtlasAsync("shipYardIcon/" .. slot4, slot4, slot5:Find("Image/mask/icon"), true)
-	setText(slot5:Find("words/Text"), i18n("techpackage_item_use_1", slot3:getName()))
-	setText(slot5:Find("words/Text_2"), i18n("techpackage_item_use_2", getDropName({
+	slot3 = {
 		type = DROP_TYPE_ITEM,
-		id = slot2
-	})))
-	GetImageSpriteFromAtlasAsync(pg.item_data_statistics[slot2].icon, "", slot0.unlockPanel:Find("window/confirm_btn/Image/Image"))
+		id = slot0.contextData.shipBluePrintVO:getUnlockItem()
+	}
+	slot4 = slot0.contextData.shipBluePrintVO:getShipVO()
+	slot5 = slot4:getPainting()
+	slot6 = slot0.unlockPanel:Find("window/content")
+
+	GetImageSpriteFromAtlasAsync("shipYardIcon/" .. slot5, slot5, slot6:Find("Image/mask/icon"), true)
+	setText(slot6:Find("words/Text"), i18n("techpackage_item_use_1", slot4:getName()))
+	setText(slot6:Find("words/Text_2"), i18n("techpackage_item_use_2", getDropName(slot3)))
+	GetImageSpriteFromAtlasAsync(getDropIcon(slot3), "", slot0.unlockPanel:Find("window/confirm_btn/Image/Image"))
 	setText(slot0.unlockPanel:Find("window/confirm_btn/Image/Text"), i18n("event_ui_consume"))
 	onButton(slot0, slot0.unlockPanel:Find("window/confirm_btn"), function ()
 		pg.UIMgr.GetInstance():UnblurPanel(uv0.unlockPanel, uv0.top)

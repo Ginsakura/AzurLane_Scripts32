@@ -356,7 +356,7 @@ function slot0.updateDrop(slot0, slot1, slot2, slot3)
 			count = slot4[3]
 		})
 		onButton(slot0, slot3, function ()
-			if pg.item_data_statistics[uv0[2]] and ({
+			if Item.getConfigData(uv0[2]) and ({
 				[99.0] = true
 			})[slot0.type] then
 				uv1:emit(LevelMediator2.GET_CHAPTER_DROP_SHIP_LIST, uv1.chapter.id, function (slot0)

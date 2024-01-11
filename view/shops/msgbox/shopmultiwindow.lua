@@ -50,11 +50,11 @@ function slot0.InitWindow(slot0, slot1, slot2)
 		setActive(slot0.timeLimitTF, slot4)
 
 		if slot4 and slot5 then
-			setText(slot0:findTF("Text", slot0.timeLimitTF), i18n("eventshop_time_hint", pg.TimeMgr.GetInstance():STimeDescC(getProxy(ActivityProxy):getActivityById(pg.item_data_statistics[({
+			setText(slot0:findTF("Text", slot0.timeLimitTF), i18n("eventshop_time_hint", pg.TimeMgr.GetInstance():STimeDescC(getProxy(ActivityProxy):getActivityById(Item.getConfigData(({
 				id = slot1:getConfig("commodity_id"),
 				type = slot1:getConfig("commodity_type"),
 				count = slot1:getConfig("num")
-			}).id].link_id).stopTime, "%m.%d")))
+			}).id).link_id).stopTime, "%m.%d")))
 		end
 	end
 

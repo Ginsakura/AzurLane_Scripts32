@@ -780,7 +780,7 @@ end
 function SCENE.GetInvitationPage(slot0)
 	slot2 = nil
 
-	if slot0:getTempCfgTable().open_ui[1] == "login_year" then
+	if slot0:getConfig("open_ui")[1] == "login_year" then
 		slot2 = AssignedShipScene
 	elseif slot1 == "login_santa" then
 		slot2 = AssignedShipForChristmasScene

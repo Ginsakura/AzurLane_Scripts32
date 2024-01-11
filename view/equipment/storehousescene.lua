@@ -1129,7 +1129,7 @@ function slot0.updateItem(slot0, slot1, slot2)
 			onButton(slot0, slot3.go, function ()
 				uv0:emit(uv1.ON_ITEM, uv2.id, function ()
 					if Item.InTimeLimitSkinAssigned(uv0.id) then
-						slot1 = table.mergeArray(slot0[2], uv0:getTempCfgTable().usage_arg[3], true)
+						slot1 = table.mergeArray(slot0[2], uv0:getConfig("usage_arg")[3], true)
 					end
 
 					slot2 = getProxy(ShipSkinProxy)
