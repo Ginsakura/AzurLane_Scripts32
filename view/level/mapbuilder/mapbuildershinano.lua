@@ -141,8 +141,6 @@ function slot1.UpdateButtons(slot0)
 end
 
 function slot1.PostUpdateMap(slot0, slot1)
-	slot4 = getProxy(ChapterProxy):getMapsByActivities()
-
 	setActive(slot0._tf:Find("rumeng"), false)
 	setActive(slot0._tf:Find("huigui"), false)
 
@@ -150,22 +148,18 @@ function slot1.PostUpdateMap(slot0, slot1)
 		setActive(slot0.sceneParent.btnPrev, false)
 		setActive(slot0.sceneParent.btnNext, false)
 
-		slot7 = _.detect(slot4, function (slot0)
-			return slot0.id == uv0.id + 1
-		end)
+		slot6 = getProxy(ChapterProxy):getMapById(slot1.id + 1)
 
-		setActive(slot5, slot7)
-		setActive(slot6, _.detect(slot4, function (slot0)
-			return slot0.id == uv0.id - 1
-		end))
+		setActive(slot4, slot6)
+		setActive(slot5, getProxy(ChapterProxy):getMapById(slot1.id - 1))
+		LeanTween.cancel(go(slot4), true)
 		LeanTween.cancel(go(slot5), true)
-		LeanTween.cancel(go(slot6), true)
 
-		if slot7 then
-			slot9 = tf(slot5).localScale
-			slot12 = Clone(tf(slot5):GetChild(0):Find("Quad"):GetComponent(typeof(MeshRenderer)).sharedMaterial:GetColor("_MainColor"))
+		if slot6 then
+			slot8 = tf(slot4).localScale
+			slot11 = Clone(tf(slot4):GetChild(0):Find("Quad"):GetComponent(typeof(MeshRenderer)).sharedMaterial:GetColor("_MainColor"))
 
-			slot0:RecordTween("rumengAlphaTween", LeanTween.value(go(slot5), 0, 1, 0.8):setOnUpdate(System.Action_float(function (slot0)
+			slot0:RecordTween("rumengAlphaTween", LeanTween.value(go(slot4), 0, 1, 0.8):setOnUpdate(System.Action_float(function (slot0)
 				uv0.a = uv1.a * slot0
 
 				uv2:SetColor("_MainColor", uv0)
@@ -176,11 +170,11 @@ function slot1.PostUpdateMap(slot0, slot1)
 			return
 		end
 
-		if slot8 then
-			slot9 = tf(slot6).localScale
-			slot12 = Clone(tf(slot6):GetChild(0):Find("Quad"):GetComponent(typeof(MeshRenderer)).sharedMaterial:GetColor("_MainColor"))
+		if slot7 then
+			slot8 = tf(slot5).localScale
+			slot11 = Clone(tf(slot5):GetChild(0):Find("Quad"):GetComponent(typeof(MeshRenderer)).sharedMaterial:GetColor("_MainColor"))
 
-			slot0:RecordTween("huiguiAlphaTween", LeanTween.value(go(slot6), 0, 1, 0.8):setOnUpdate(System.Action_float(function (slot0)
+			slot0:RecordTween("huiguiAlphaTween", LeanTween.value(go(slot5), 0, 1, 0.8):setOnUpdate(System.Action_float(function (slot0)
 				uv0.a = uv1.a * slot0
 
 				uv2:SetColor("_MainColor", uv0)

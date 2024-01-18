@@ -64,15 +64,28 @@ function slot0.init(slot0)
 	slot0.titlt = slot0:findTF("top/frame/title")
 	slot0.titltNative = slot0:findTF("top/frame/title_native")
 	slot0.titltRandom = slot0:findTF("top/frame/title_random")
-	slot1 = slot0:findTF("detail")
-	slot0.detailCg = GetOrAddComponent(slot1, typeof(CanvasGroup))
+	slot0.detailCg = GetOrAddComponent(slot0:findTF("detail"), typeof(CanvasGroup))
 	slot2 = slot0:findTF("adapt/tpl")
+
+	setActive(slot2, false)
+
+	slot6 = PlayerVitaeBaseBtn.HRZ_TYPE
 	slot0.btns = {
-		PlayerVitaeSpineBtn.New(slot2),
-		PlayerVitaeBGBtn.New(slot2),
-		PlayerVitaeBMGBtn.New(slot2),
-		PlayerVitaeLive2dBtn.New(slot2)
+		PlayerVitaeSpineBtn.New(slot2, PlayerVitaeBaseBtn.HRZ_TYPE),
+		PlayerVitaeBGBtn.New(slot2, PlayerVitaeBaseBtn.HRZ_TYPE),
+		PlayerVitaeBMGBtn.New(slot2, PlayerVitaeBaseBtn.HRZ_TYPE),
+		PlayerVitaeLive2dBtn.New(slot2, slot6)
 	}
+
+	for slot6 = 1, #slot0.btns do
+		slot0.btns[slot6]:setParent(slot0:findTF("adapt/toggleBtns"), #slot0.btns - slot6)
+	end
+
+	slot0.btnLive2dReset = slot0:findTF("adapt/btnLive2dReset")
+
+	GetComponent(findTF(slot0.btnLive2dReset, "img"), typeof(Image)):SetNativeSize()
+	SetParent(slot0.btnLive2dReset, slot0:findTF("adapt/toggleBtns"))
+
 	slot0.shipsPage = PlayerVitaeShipsPage.New(slot0._tf, slot0.event, slot0.contextData)
 	slot0.detailPage = PlayerVitaeDetailPage.New(slot1, slot0.event, slot0.contextData)
 	slot0.contextData.renamePage = PlayerVitaeRenamePage.New(slot0._tf, slot0.event)
@@ -130,6 +143,7 @@ function slot0.didEnter(slot0)
 	slot0:UpdatePainting()
 	slot0.detailPage:ExecuteAction("Show", slot0:GetPlayer(), slot1)
 	slot0:emit(uv0.ON_PAGE_SWTICH, uv0.PAGE_DEFAULT)
+	slot0:checkShowResetL2dBtn()
 end
 
 function slot0.DoEnterAnimation(slot0)
@@ -218,6 +232,19 @@ function slot0.onBackPressed(slot0)
 	end
 
 	uv0.super.onBackPressed(slot0)
+end
+
+function slot0.checkShowResetL2dBtn(slot0)
+	if not PathMgr.FileExists(PathMgr.getAssetBundle(HXSet.autoHxShiftPath("live2d/" .. string.lower(slot0:GetFlagShip():getPainting()), nil, true))) then
+		setActive(slot0.btnLive2dReset, false)
+
+		return
+	end
+
+	setActive(slot0.btnLive2dReset, true)
+	onButton(slot0, slot0.btnLive2dReset, function ()
+		Live2dConst.ClearLive2dSave(uv0.ship.skinId, uv0.ship.id)
+	end, SFX_CONFIRM)
 end
 
 function slot0.willExit(slot0)
