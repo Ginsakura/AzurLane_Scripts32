@@ -84,6 +84,7 @@ function slot0.init(slot0)
 	slot0.btnLive2dReset = slot0:findTF("adapt/btnLive2dReset")
 
 	GetComponent(findTF(slot0.btnLive2dReset, "img"), typeof(Image)):SetNativeSize()
+	GetComponent(slot0.btnLive2dReset, typeof(Image)):SetNativeSize()
 	SetParent(slot0.btnLive2dReset, slot0:findTF("adapt/toggleBtns"))
 
 	slot0.shipsPage = PlayerVitaeShipsPage.New(slot0._tf, slot0.event, slot0.contextData)
