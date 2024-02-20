@@ -47,12 +47,7 @@ function slot0.PreCalcAspect(slot0, slot1)
 end
 
 function slot0.MatchResolution(slot0)
-	print(slot0._parentTf.rect.height, slot0._tf.rect.height)
-
 	slot1 = uv0.PreCalcAspect(slot0._parentTf, slot0._tf.rect.height)
-
-	print(slot1)
-
 	slot0._tf.localScale = Vector3(slot1, slot1, 1)
 end
 
@@ -96,6 +91,7 @@ function slot0.OnInit(slot0)
 
 		uv0:emit(PlayerVitaeMediator.CHANGE_MANIFESTO, slot0)
 	end)
+	slot0._tf:SetAsFirstSibling()
 end
 
 function slot0.Show(slot0, slot1, slot2)

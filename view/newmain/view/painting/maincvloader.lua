@@ -4,11 +4,11 @@ function slot0.Ctor(slot0, slot1)
 end
 
 function slot0.Load(slot0, slot1, slot2, slot3, slot4)
-	if slot0.preCvCueSheetName == pg.CriMgr.GetCVBankName(ShipWordHelper.RawGetCVKey(slot1.skinId)) then
+	if slot0.preCvCueSheetName == slot1 then
 		slot0:Play(slot2, slot3, slot4)
 	else
 		slot0:Unload()
-		pg.CriMgr.GetInstance():LoadCueSheet(slot6, function (slot0)
+		pg.CriMgr.GetInstance():LoadCueSheet(slot1, function (slot0)
 			uv0.preCvCueSheetName = uv1
 
 			if slot0 then

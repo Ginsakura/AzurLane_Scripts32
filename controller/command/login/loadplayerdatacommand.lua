@@ -54,6 +54,11 @@ function slot0.execute(slot0, slot1)
 	slot0.facade:registerProxy(LimitChallengeProxy.New())
 	slot0.facade:registerProxy(GameRoomProxy.New())
 	slot0.facade:registerProxy(FeastProxy.New())
+
+	if not LOCK_EDUCATE_SYSTEM then
+		slot0.facade:registerProxy(EducateProxy.New())
+	end
+
 	pg.ConnectionMgr.GetInstance():setPacketIdx(1)
 	pg.ConnectionMgr.GetInstance():Send(11001, {
 		timestamp = 0
@@ -95,6 +100,10 @@ function slot0.execute(slot0, slot1)
 			uv1:sendNotification(GAME.GET_SURVEY_STATE, {
 				surveyID = slot8
 			})
+		end
+
+		if not LOCK_EDUCATE_SYSTEM then
+			uv1:sendNotification(GAME.EDUCATE_REQUEST)
 		end
 
 		pg.SdkMgr.GetInstance():BindCPU()

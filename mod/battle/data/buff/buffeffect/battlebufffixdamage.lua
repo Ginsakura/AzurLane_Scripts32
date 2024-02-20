@@ -15,6 +15,10 @@ function slot1.SetArgs(slot0, slot1, slot2)
 end
 
 function slot1.onBeforeTakeDamage(slot0, slot1, slot2, slot3)
+	if not slot0:damageCheck(slot3) then
+		return
+	end
+
 	slot5 = slot3.damage
 
 	if (slot0._fixProb >= 10000 or uv0.Battle.BattleFormulas.IsHappen(slot0._fixProb)) and (slot0._fixValue or slot0._fixRate) then

@@ -2345,4 +2345,8 @@ function slot0.GetFrameAndEffect(slot0, slot1)
 	return slot2, slot3
 end
 
+function slot0.GetRecordPosKey(slot0)
+	return slot0.skinId
+end
+
 return slot0
