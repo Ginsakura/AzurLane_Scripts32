@@ -71,19 +71,8 @@ function slot0.execute(slot0, slot1)
 			kvargs1 = slot8
 		}, 11203, function (slot0)
 			if slot0.result == 0 then
-				for slot5, slot6 in ipairs(slot0.award_list) do
-					slot7 = Item.New({
-						id = slot6.id,
-						type = slot6.type,
-						number = slot6.number
-					})
-
-					table.insert({}, slot7)
-					pg.m02:sendNotification(GAME.ADD_ITEM, slot7)
-				end
-
 				if uv0 == FeastDorm.OP_INTERACTION then
-					uv1:HandleInteraction(uv2, uv3, slot0.number[1] or 0, slot1)
+					uv1:HandleInteraction(uv2, uv3, slot0.number[1] or 0, PlayerConst.addTranDrop(slot0.award_list))
 				elseif uv0 == FeastDorm.OP_MAKE_TICKET then
 					uv1:HandleMakeTicket(uv2)
 				elseif uv0 == FeastDorm.OP_GIVE_TICKET then

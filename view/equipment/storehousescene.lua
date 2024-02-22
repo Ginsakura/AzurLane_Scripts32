@@ -487,7 +487,7 @@ function slot0.didEnter(slot0)
 		slot0 = {}
 
 		if underscore.any(uv0.selectedIds, function (slot0)
-			return uv0.equipmentVOByIds[slot0[1]].config.rarity >= 4 or slot1.level > 1
+			return uv0.equipmentVOByIds[slot0[1]]:getConfig("rarity") >= 4 or slot1:getConfig("level") > 1
 		end) then
 			table.insert(slot0, function (slot0)
 				uv0.equipDestroyConfirmWindow:Load()
@@ -1130,14 +1130,14 @@ function slot0.updateItem(slot0, slot1, slot2)
 			onButton(slot0, slot3.go, function ()
 				uv0:emit(uv1.ON_ITEM, uv2.id, function ()
 					if uv0:IsAllSkinOwner() then
-						slot1 = {
+						slot1 = Drop.New({
 							count = 1,
 							type = DROP_TYPE_ITEM,
 							id = uv0:getConfig("usage_arg")[5]
-						}
+						})
 
 						uv1.msgBox:ExecuteAction("Show", {
-							content = i18n("blackfriday_pack_select_skinall_dialog", uv0:getConfig("name"), getDropName(slot1)),
+							content = i18n("blackfriday_pack_select_skinall_dialog", uv0:getConfig("name"), slot1:getName()),
 							leftDrop = {
 								count = 1,
 								type = DROP_TYPE_ITEM,
@@ -1282,8 +1282,8 @@ function slot0.checkDestroyGold(slot0, slot1, slot2)
 	slot4 = false
 
 	for slot8, slot9 in pairs(slot0.selectedIds) do
-		if pg.equip_data_template[slot9[1]] then
-			slot3 = 0 + (slot11.destory_gold or 0) * slot9[2]
+		if Equipment.CanInBag(slot9[1]) then
+			slot3 = 0 + (Equipment.getConfigData(slot9[1]).destory_gold or 0) * slot9[2]
 		end
 
 		if slot1 and slot9[1] == slot1.configId then
@@ -1292,7 +1292,7 @@ function slot0.checkDestroyGold(slot0, slot1, slot2)
 	end
 
 	if not slot4 and slot1 and slot2 > 0 then
-		slot3 = slot3 + (pg.equip_data_template[slot1.configId].destory_gold or 0) * slot2
+		slot3 = slot3 + (slot1:getConfig("destory_gold") or 0) * slot2
 	end
 
 	if slot0.player:GoldMax(slot3) then

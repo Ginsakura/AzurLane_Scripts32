@@ -435,7 +435,7 @@ function slot0.getEquipAmbushRateReduce(slot0)
 	for slot5, slot6 in pairs(slot0.ships) do
 		for slot10, slot11 in pairs(slot6:getActiveEquipments()) do
 			if slot11 then
-				slot1 = math.max(slot1, slot11.config.equip_parameters.ambush_extra or 0)
+				slot1 = math.max(slot1, slot11:getConfig("equip_parameters").ambush_extra or 0)
 			end
 		end
 	end
@@ -449,7 +449,7 @@ function slot0.getEquipDodgeRateUp(slot0)
 	for slot5, slot6 in pairs(slot0.ships) do
 		for slot10, slot11 in pairs(slot6:getActiveEquipments()) do
 			if slot11 then
-				slot1 = math.max(slot1, slot11.config.equip_parameters.avoid_extra or 0)
+				slot1 = math.max(slot1, slot11:getConfig("equip_parameters").avoid_extra or 0)
 			end
 		end
 	end

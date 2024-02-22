@@ -526,11 +526,12 @@ end
 
 function slot0.UpdateDropItems(slot0)
 	for slot4, slot5 in ipairs(slot0.contextData.DisplayItems or {}) do
-		updateDropCfg({
+		slot7 = Drop.New({
 			type = slot0.contextData.DisplayItems[5 - slot4][1],
 			id = slot0.contextData.DisplayItems[5 - slot4][2],
 			count = slot0.contextData.DisplayItems[5 - slot4][3]
 		})
+
 		onButton(slot0, slot0:findTF("milestone/item", slot0.barList[slot4]), function ()
 			uv0:emit(uv1.ON_DROP, uv2)
 		end, SFX_PANEL)

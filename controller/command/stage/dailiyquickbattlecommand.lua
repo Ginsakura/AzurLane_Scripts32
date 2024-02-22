@@ -17,26 +17,17 @@ function slot0.execute(slot0, slot1)
 	}, 40008, function (slot0)
 		if slot0.result == 0 then
 			for slot5, slot6 in ipairs(slot0.reward_list) do
-				for slot10, slot11 in ipairs(slot6.drop_list) do
-					slot12 = Item.New({
-						type = slot11.type,
-						id = slot11.id,
-						count = slot11.number
-					})
-
-					uv0:sendNotification(GAME.ADD_ITEM, slot12)
-					table.insert(slot1[slot5], slot12)
-				end
+				-- Nothing
 			end
 
-			uv1.data[uv2] = (uv1.data[uv2] or 0) + uv3
+			uv0.data[uv1] = (uv0.data[uv1] or 0) + uv2
 
-			uv0:sendNotification(GAME.DAILY_LEVEL_QUICK_BATTLE_DONE, {
+			uv3:sendNotification(GAME.DAILY_LEVEL_QUICK_BATTLE_DONE, {
 				awards = {
-					[slot5] = {}
+					[slot5] = PlayerConst.addTranDrop(slot6.drop_list)
 				},
 				stageId = uv4,
-				dailyLevelId = uv2
+				dailyLevelId = uv1
 			})
 		else
 			pg.TipsMgr.GetInstance():ShowTips(ERROR_MESSAGE[slot0.result] .. slot0.result)

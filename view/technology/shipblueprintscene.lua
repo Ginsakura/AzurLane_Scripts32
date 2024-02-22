@@ -36,7 +36,6 @@ end
 function slot0.getItemById(slot0, slot1)
 	return getProxy(BagProxy):getItemById(slot1) or Item.New({
 		count = 0,
-		type = DROP_TYPE_ITEM,
 		id = slot1
 	})
 end
@@ -1024,7 +1023,7 @@ function slot0.updateModPanel(slot0)
 				})
 			end
 		end, SFX_PANEL)
-		setScrollText(findTF(slot0.itemInfo, "name/Text"), slot10.cfg.name)
+		setScrollText(findTF(slot0.itemInfo, "name/Text"), slot10:getConfig("name"))
 		setText(slot0.itemInfoCount, i18n("tec_tip_material_stock") .. ":" .. getProxy(PlayerProxy):getRawData():getResource(PlayerConst.ResGold))
 		setText(slot0.itemInfo:Find("no_cost/Text"), i18n("tec_tip_no_consumption"))
 		setText(slot0.modBtn:Find("pursuing_cost/word"), i18n("tec_tip_to_consumption"))
@@ -1221,7 +1220,7 @@ function slot0.updateFittingPanel(slot0)
 				})
 			end
 		end, SFX_PANEL)
-		setScrollText(findTF(slot0.fittingItemInfo, "name/Text"), slot10.cfg.name)
+		setScrollText(findTF(slot0.fittingItemInfo, "name/Text"), slot10:getConfig("name"))
 		setText(slot0.fittingItemInfoCount, i18n("tec_tip_material_stock") .. ":" .. getProxy(PlayerProxy):getRawData():getResource(PlayerConst.ResGold))
 		setText(slot0.fittingItemInfo:Find("no_cost/Text"), i18n("tec_tip_no_consumption"))
 		setText(slot0.fittingConfirmBtn:Find("pursuing_cost/word"), i18n("tec_tip_to_consumption"))
@@ -2351,18 +2350,18 @@ function slot0.showUnlockPanel(slot0)
 	setActive(slot0.unlockPanel, true)
 
 	slot1 = slot0.contextData.shipBluePrintVO.id
-	slot3 = {
+	slot3 = Drop.New({
 		type = DROP_TYPE_ITEM,
 		id = slot0.contextData.shipBluePrintVO:getUnlockItem()
-	}
+	})
 	slot4 = slot0.contextData.shipBluePrintVO:getShipVO()
 	slot5 = slot4:getPainting()
 	slot6 = slot0.unlockPanel:Find("window/content")
 
 	GetImageSpriteFromAtlasAsync("shipYardIcon/" .. slot5, slot5, slot6:Find("Image/mask/icon"), true)
 	setText(slot6:Find("words/Text"), i18n("techpackage_item_use_1", slot4:getName()))
-	setText(slot6:Find("words/Text_2"), i18n("techpackage_item_use_2", getDropName(slot3)))
-	GetImageSpriteFromAtlasAsync(getDropIcon(slot3), "", slot0.unlockPanel:Find("window/confirm_btn/Image/Image"))
+	setText(slot6:Find("words/Text_2"), i18n("techpackage_item_use_2", slot3:getName()))
+	GetImageSpriteFromAtlasAsync(slot3:getIcon(), "", slot0.unlockPanel:Find("window/confirm_btn/Image/Image"))
 	setText(slot0.unlockPanel:Find("window/confirm_btn/Image/Text"), i18n("event_ui_consume"))
 	onButton(slot0, slot0.unlockPanel:Find("window/confirm_btn"), function ()
 		pg.UIMgr.GetInstance():UnblurPanel(uv0.unlockPanel, uv0.top)

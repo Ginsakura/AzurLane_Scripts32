@@ -408,7 +408,7 @@ function slot0.UpdateRyzaDrop(slot0, slot1, slot2, slot3)
 	setActive(slot1:Find("icon_bg/stars"), false)
 
 	if slot2.type == DROP_TYPE_EQUIP or slot2.type == DROP_TYPE_EQUIPMENT_SKIN then
-		slot4 = slot2.cfg.rarity - 1
+		slot4 = slot2:getConfig("rarity") - 1
 	end
 
 	if slot3 then
@@ -1262,14 +1262,14 @@ function slot0.ShowCompositeConfirmWindow(slot0)
 		1,
 		slot5 and slot6 or 1
 	}
-	slot10 = {
+	slot10 = Drop.New({
 		type = slot4:GetProduction()[1],
 		id = slot4:GetProduction()[2]
-	}
+	})
 
 	slot0:UpdateRyzaDrop(slot0.layerCompositeConfirm:Find("Window/Icon"), slot10)
 
-	slot13 = updateDropCfg(slot10).name
+	slot12 = slot10:getConfig("name")
 
 	setActive(slot0.layerCompositeConfirm:Find("Window/Counters"), slot5)
 
@@ -1324,7 +1324,7 @@ function slot0.ShowCompositeConfirmWindow(slot0)
 	setAnchoredPosition(slot0.layerCompositeConfirm:Find("Window/Icon"), {
 		y = uv1
 	})
-	setText(slot0.layerCompositeConfirm:Find("Window/Text"), i18n("ryza_composite_confirm_single", slot13, slot1))
+	setText(slot0.layerCompositeConfirm:Find("Window/Text"), i18n("ryza_composite_confirm_single", slot12, slot1))
 end
 
 function slot0.HideCompositeConfirmWindow(slot0)
@@ -1386,7 +1386,7 @@ function slot0.ShowCompositeResult(slot0, slot1)
 	slot2 = slot1[1]
 
 	slot0:UpdateRyzaDrop(slot0.layerCompositeResult:Find("Window/Icon"), slot2)
-	setScrollText(slot0.layerCompositeResult:Find("Window/NameBG/Rect/Name"), getDropName(slot2))
+	setScrollText(slot0.layerCompositeResult:Find("Window/NameBG/Rect/Name"), slot2:getName())
 	setText(slot0.layerCompositeResult:Find("Window/CountBG/Text"), slot2.count)
 end
 

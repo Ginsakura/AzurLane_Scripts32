@@ -584,19 +584,19 @@ function slot0.IsShowTipById(slot0)
 			error("Decompilation failed")
 			-- Exception in function building!
 			-- Traceback (most recent call last):
-			-- File "D:\Script\Scripts32\luajit-decompiler\ljd\ast\builder.py", line 856, in _build_function
+			-- File "D:\Script\LuaJitDecompile\AzurLane\luajit-decompiler\ljd\ast\builder.py", line 856, in _build_function
 			--     return _build_function_definition(prototype, state.header)
 			--            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-			-- File "D:\Script\Scripts32\luajit-decompiler\ljd\ast\builder.py", line 54, in _build_function_definition
+			-- File "D:\Script\LuaJitDecompile\AzurLane\luajit-decompiler\ljd\ast\builder.py", line 54, in _build_function_definition
 			--     node.statements.contents = _build_function_blocks(state, instructions)
 			--                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-			-- File "D:\Script\Scripts32\luajit-decompiler\ljd\ast\builder.py", line 75, in _build_function_blocks
+			-- File "D:\Script\LuaJitDecompile\AzurLane\luajit-decompiler\ljd\ast\builder.py", line 75, in _build_function_blocks
 			--     _blockenize(state, instructions)
-			-- File "D:\Script\Scripts32\luajit-decompiler\ljd\ast\builder.py", line 143, in _blockenize
+			-- File "D:\Script\LuaJitDecompile\AzurLane\luajit-decompiler\ljd\ast\builder.py", line 143, in _blockenize
 			--     _fix_broken_unary_expressions(state, instructions)
-			-- File "D:\Script\Scripts32\luajit-decompiler\ljd\ast\builder.py", line 1242, in _fix_broken_unary_expressions
+			-- File "D:\Script\LuaJitDecompile\AzurLane\luajit-decompiler\ljd\ast\builder.py", line 1242, in _fix_broken_unary_expressions
 			--     _remove_instruction(state, instructions, i + 1)
-			-- File "D:\Script\Scripts32\luajit-decompiler\ljd\ast\builder.py", line 1265, in _remove_instruction
+			-- File "D:\Script\LuaJitDecompile\AzurLane\luajit-decompiler\ljd\ast\builder.py", line 1265, in _remove_instruction
 			--     state.debuginfo.addr_to_line_map.pop(index)
 			-- IndexError: pop from empty list
 		end,
@@ -810,11 +810,7 @@ function slot0.GetCrusingUnreceiveAward(slot0)
 		if slot0.data1 < slot8 then
 			break
 		elseif not slot3[slot8] then
-			table.insert(slot2, {
-				type = slot1.drop_client[slot7][1],
-				id = slot1.drop_client[slot7][2],
-				count = slot1.drop_client[slot7][3]
-			})
+			table.insert(slot2, Drop.Create(slot1.drop_client[slot7]))
 		end
 	end
 
@@ -834,11 +830,7 @@ function slot0.GetCrusingUnreceiveAward(slot0)
 		if slot0.data1 < slot9 then
 			break
 		elseif not slot4[slot9] then
-			table.insert(slot2, {
-				type = slot1.drop_client_pay[slot8][1],
-				id = slot1.drop_client_pay[slot8][2],
-				count = slot1.drop_client_pay[slot8][3]
-			})
+			table.insert(slot2, Drop.Create(slot1.drop_client_pay[slot8]))
 		end
 	end
 

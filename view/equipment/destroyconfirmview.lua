@@ -46,10 +46,10 @@ function slot0.DisplayDestroyBonus(slot0, slot1)
 	slot2 = {}
 
 	for slot7, slot8 in ipairs(slot0.selectedIds) do
-		if pg.equip_data_template[slot8[1]] then
+		if Equipment.CanInBag(slot8[1]) then
 			slot3 = 0 + (slot9.destory_gold or 0) * slot8[2]
 
-			for slot15, slot16 in ipairs(slot9.destory_item or {}) do
+			for slot15, slot16 in ipairs(Equipment.getConfigData(slot8[1]).destory_item or {}) do
 				slot17 = false
 
 				for slot21, slot22 in ipairs(slot2) do
@@ -94,7 +94,7 @@ function slot0.DisplayDestroyBonus(slot0, slot1)
 
 			updateDrop(slot2, slot3)
 
-			slot4, slot5 = contentWrap(slot3.cfg.name, 10, 2)
+			slot4, slot5 = contentWrap(slot3:getConfig("name"), 10, 2)
 
 			if slot4 then
 				slot5 = slot5 .. "..."
@@ -103,10 +103,10 @@ function slot0.DisplayDestroyBonus(slot0, slot1)
 			setText(slot2:Find("name"), slot5)
 			onButton(uv1, slot2, function ()
 				if uv0.type == DROP_TYPE_RESOURCE or uv0.type == DROP_TYPE_ITEM then
-					uv1:emit(BaseUI.ON_ITEM, uv0.cfg.id)
+					uv1:emit(BaseUI.ON_ITEM, uv0:getConfig("id"))
 				elseif uv0.type == DROP_TYPE_EQUIP then
 					uv1:emit(BaseUI.ON_EQUIPMENT, {
-						equipmentId = uv0.cfg.id,
+						equipmentId = uv0:getConfig("id"),
 						type = EquipmentInfoMediator.TYPE_DISPLAY
 					})
 				end

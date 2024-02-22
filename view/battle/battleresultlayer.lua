@@ -367,12 +367,12 @@ function slot0.showRewardInfo(slot0)
 				slot4 = slot4 - 1500
 
 				if _.detect(slot0, function (slot0)
-					return slot0.dropType == DROP_TYPE_RESOURCE and slot0.id == uv0
+					return slot0.type == DROP_TYPE_RESOURCE and slot0.id == uv0
 				end) and slot4 < slot5.count then
 					slot5.count = slot5.count - slot4
 
 					table.insert(_.filter(uv0.contextData.drops, function (slot0)
-						return slot0.dropType ~= DROP_TYPE_RESOURCE or slot0.id ~= uv0
+						return slot0.type ~= DROP_TYPE_RESOURCE or slot0.id ~= uv0
 					end), slot5)
 				end
 			end

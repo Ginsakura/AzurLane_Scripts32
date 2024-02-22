@@ -78,13 +78,13 @@ end
 
 function slot0.Updatelayout(slot0)
 	if underscore.any(slot0.equips, function (slot0)
-		return slot0.config.rarity >= 4
+		return slot0:getConfig("rarity") >= 4
 	end) then
 		table.insert({}, i18n("destroy_high_rarity_tip"))
 	end
 
 	if underscore.any(slot0.equips, function (slot0)
-		return slot0.config.level > 1
+		return slot0:getConfig("level") > 1
 	end) then
 		table.insert(slot1, i18n("destroy_high_intensify_tip", ""))
 	end
@@ -109,10 +109,10 @@ end
 function slot0.UpdateEquips(slot0)
 	mergeSort(slot0.equips, CompareFuncs({
 		function (slot0)
-			return -slot0.config.rarity
+			return -slot0:getConfig("rarity")
 		end,
 		function (slot0)
-			return -slot0.config.level
+			return -slot0:getConfig("level")
 		end
 	}, true))
 

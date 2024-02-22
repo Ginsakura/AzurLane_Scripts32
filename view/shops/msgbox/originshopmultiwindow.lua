@@ -51,16 +51,16 @@ function slot0.InitWindow(slot0, slot1, slot2)
 		slot5 = slot1:GetLimitGoodCount()
 	else
 		slot3 = slot1:getDropInfo()
-		slot4 = {
+		slot4 = Drop.New({
 			type = DROP_TYPE_RESOURCE,
 			id = slot1:getConfig("resource_type"),
 			count = slot1:getConfig("resource_num")
-		}
+		})
 		slot5 = slot1:getLimitCount()
 	end
 
 	if slot5 ~= 0 then
-		slot6 = math.min(math.max(math.floor(GetOwnedDropCount(slot4) / slot4.count), 1), slot5 - slot1.buyCount)
+		slot6 = math.min(math.max(math.floor(slot4:getOwnedCount() / slot4.count), 1), slot5 - slot1.buyCount)
 	end
 
 	function (slot0)
@@ -73,8 +73,8 @@ function slot0.InitWindow(slot0, slot1, slot2)
 	UpdateOwnDisplay(slot0.ownerTF, slot3)
 	RegisterDetailButton(slot0, slot0.detailTF, slot3)
 
-	slot0.nameTF.text = slot3.cfg.name
-	slot0.descTF.text = slot3.desc or slot3.cfg.desc
+	slot0.nameTF.text = slot3:getConfig("name")
+	slot0.descTF.text = slot3.desc or slot3:getConfig("desc")
 
 	updateDrop(slot0.bottomItem, slot3)
 	onButton(slot0, slot0.confirmBtn, function ()

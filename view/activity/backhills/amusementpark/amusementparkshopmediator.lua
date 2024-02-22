@@ -33,12 +33,10 @@ function slot0.AddSpecialList(slot0, slot1)
 
 	if pg.gameset.activity_lottery_rewards then
 		for slot6, slot7 in ipairs(pg.gameset.activity_lottery_rewards.description or {}) do
-			table.insert(slot2, {
-				type = slot7[2][1],
-				id = slot7[2][2],
-				count = slot7[2][3],
-				HasGot = table.contains(slot1.data3_list, slot7[1])
-			})
+			slot8 = Drop.Create(slot7[2])
+			slot8.HasGot = table.contains(slot1.data3_list, slot7[1])
+
+			table.insert(slot2, slot8)
 		end
 	end
 

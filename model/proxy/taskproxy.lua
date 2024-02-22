@@ -210,7 +210,9 @@ function slot0.getCanReceiveCount(slot0)
 	for slot5, slot6 in pairs(slot0.data) do
 		if slot6:ShowOnTaskScene() and slot6:isFinish() and slot6:isReceive() == false then
 			for slot11, slot12 in ipairs(slot6:getConfig("award_display")) do
-				if not LOCK_UR_SHIP and slot12[1] == DROP_TYPE_VITEM and Item.getConfigData(slot12[2]).virtual_type == 20 and (not LOCK_UR_SHIP and getProxy(BagProxy):GetLimitCntById(pg.gameset.urpt_chapter_max.description[1]) or 0) + slot12[3] - (not LOCK_UR_SHIP and pg.gameset.urpt_chapter_max.description[2] or 0) > 0 then
+				slot13, slot14, slot15 = unpack(slot12)
+
+				if not LOCK_UR_SHIP and slot13 == DROP_TYPE_VITEM and Item.getConfigData(slot14).virtual_type == 20 and (not LOCK_UR_SHIP and getProxy(BagProxy):GetLimitCntById(pg.gameset.urpt_chapter_max.description[1]) or 0) + slot15 - (not LOCK_UR_SHIP and pg.gameset.urpt_chapter_max.description[2] or 0) > 0 then
 					slot1 = 0 + 1 - 1
 				end
 			end

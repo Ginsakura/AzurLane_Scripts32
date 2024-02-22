@@ -169,11 +169,13 @@ function slot0.getCurrentSecretaryIndex(slot0)
 end
 
 function slot0.rotateCurrentSecretaryIndex(slot0)
-	if PlayerVitaeShipsPage.GetAllUnlockSlotCnt() < PlayerPrefs.GetInt("currentSecretaryIndex", 1) + 1 then
-		slot1 = 1
+	if PlayerVitaeShipsPage.GetAllUnlockSlotCnt() < PlayerPrefs.GetInt("currentSecretaryIndex", 1) + 1 or slot2 == PlayerVitaeShipsPage.EDUCATE_CHAR_SLOT_ID and not function ()
+		return getProxy(PlayerProxy):getRawData():ExistEducateChar() and getProxy(SettingsProxy):GetFlagShipDisplayMode() ~= FlAG_SHIP_DISPLAY_ONLY_SHIP
+	end() then
+		slot2 = 1
 	end
 
-	slot0:setCurrentSecretaryIndex(slot1)
+	slot0:setCurrentSecretaryIndex(slot2)
 end
 
 function slot0.setCurrentSecretaryIndex(slot0, slot1)

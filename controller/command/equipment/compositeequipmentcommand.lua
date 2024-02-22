@@ -3,7 +3,7 @@ slot0 = class("CompositeEquipmentCommand", pm.SimpleCommand)
 function slot0.execute(slot0, slot1)
 	slot2 = slot1:getBody()
 	slot6 = getProxy(BagProxy):getData()
-	slot10 = pg.equip_data_statistics[pg.compose_data_template[slot2.id].equip_id]
+	slot9 = pg.compose_data_template[slot2.id]
 
 	if getProxy(PlayerProxy):getData():getMaxEquipmentBag() < getProxy(EquipmentProxy):getCapacity() + slot2.count then
 		NoPosMsgBox(i18n("switch_to_shop_tip_noPos"), openDestroyEquip, gotoChargeScene)

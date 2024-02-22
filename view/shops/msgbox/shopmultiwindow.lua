@@ -59,10 +59,10 @@ function slot0.InitWindow(slot0, slot1, slot2)
 	end
 
 	if slot1:getConfig("num_limit") ~= 0 or isa(slot1, QuotaCommodity) then
-		slot5 = math.min(math.max(math.floor(GetOwnedDropCount({
+		slot5 = math.min(math.max(math.floor(Drop.New({
 			type = slot1:getConfig("resource_category"),
 			id = slot1:getConfig("resource_type")
-		}) / slot1:getConfig("resource_num")), 1), math.max(0, slot1:GetPurchasableCnt()))
+		}):getOwnedCount() / slot1:getConfig("resource_num")), 1), math.max(0, slot1:GetPurchasableCnt()))
 	end
 
 	function (slot0)
@@ -75,13 +75,13 @@ function slot0.InitWindow(slot0, slot1, slot2)
 	UpdateOwnDisplay(slot0.ownerTF, slot3)
 	RegisterDetailButton(slot0, slot0.detailTF, slot3)
 
-	slot0.nameTF.text = slot3.cfg.name
-	slot0.descTF.text = slot3.desc or slot3.cfg.desc
+	slot0.nameTF.text = slot3:getConfig("name")
+	slot0.descTF.text = slot3.desc or slot3:getConfig("desc")
 
 	updateDrop(slot0.bottomItem, slot3)
 	onButton(slot0, slot0.confirmBtn, function ()
 		if uv0 then
-			uv0(uv1, uv2.curCount, uv3.cfg.name)
+			uv0(uv1, uv2.curCount, uv3:getConfig("name"))
 		end
 
 		uv2:Close()

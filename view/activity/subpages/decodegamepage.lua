@@ -33,7 +33,7 @@ function slot0.OnFirstFlush(slot0)
 	end, SFX_PANEL)
 	GetImageSpriteFromAtlasAsync("equips/" .. Equipment.New({
 		id = DecodeGameConst.AWARD[2]
-	}).config.icon, "", slot0.itemIcon)
+	}):getConfig("icon"), "", slot0.itemIcon)
 end
 
 function slot0.GetProgressColor(slot0)

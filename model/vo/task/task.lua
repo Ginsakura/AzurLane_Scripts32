@@ -205,9 +205,11 @@ function slot0.StaticJudgeOverflow(slot0, slot1, slot2, slot3, slot4, slot5)
 		slot19 = {}
 
 		for slot24, slot25 in ipairs(slot5) do
-			if slot25[1] == DROP_TYPE_RESOURCE then
-				if slot25[2] == PlayerConst.ResGold then
-					if (slot0 or slot6.gold) + slot25[3] - pg.gameset.max_gold.key_value > 0 then
+			slot26, slot27, slot28 = unpack(slot25)
+
+			if slot26 == DROP_TYPE_RESOURCE then
+				if slot27 == PlayerConst.ResGold then
+					if (slot0 or slot6.gold) + slot28 - pg.gameset.max_gold.key_value > 0 then
 						slot14 = true
 
 						table.insert(slot19, {

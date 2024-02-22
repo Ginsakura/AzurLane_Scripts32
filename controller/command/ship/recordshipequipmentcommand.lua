@@ -62,7 +62,7 @@ function slot0.execute(slot0, slot1)
 				end
 
 				return false
-			end(slot19, slot20) and pg.equip_data_statistics[slot20] then
+			end(slot19, slot20) then
 				slot12[slot19] = slot11:getSameTypeEquipmentId(Equipment.New({
 					id = slot20
 				})) or 0

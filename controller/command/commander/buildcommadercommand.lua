@@ -20,11 +20,7 @@ function slot0.execute(slot0, slot1)
 			return
 		end
 
-		table.insert(slot11, Item.New({
-			type = slot16[1],
-			id = slot16[2],
-			count = slot16[3]
-		}))
+		table.insert(slot11, Drop.Create(slot16))
 	end
 
 	pg.ConnectionMgr.GetInstance():Send(25002, {
