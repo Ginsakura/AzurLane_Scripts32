@@ -1443,6 +1443,8 @@ function slot9.InitOxygen(slot0)
 
 	slot0._oxyState:OnDiveState()
 	slot0:ConfigBubbleFX()
+
+	return slot0._oxyState
 end
 
 function slot9.UpdateOxygen(slot0, slot1)
@@ -1464,11 +1466,7 @@ end
 
 function slot9.OxyRecover(slot0, slot1)
 	slot2 = nil
-	slot2 = (slot1 ~= uv0.Battle.OxyState.STATE_FREE_BENCH or slot0._oxyRecoveryBench) and (slot1 ~= uv0.Battle.OxyState.STATE_FREE_FLOAT or slot0._oxyRecovery) and slot0._oxyRecoverySurface
-
-	print(slot1, slot2)
-
-	slot0._currentOxy = math.min(slot0._maxOxy, slot0._currentOxy + slot2 * (pg.TimeMgr.GetInstance():GetCombatTime() - slot0._lastOxyUpdateStamp))
+	slot0._currentOxy = math.min(slot0._maxOxy, slot0._currentOxy + ((slot1 ~= uv0.Battle.OxyState.STATE_FREE_BENCH or slot0._oxyRecoveryBench) and (slot1 ~= uv0.Battle.OxyState.STATE_FREE_FLOAT or slot0._oxyRecovery) and slot0._oxyRecoverySurface) * (pg.TimeMgr.GetInstance():GetCombatTime() - slot0._lastOxyUpdateStamp))
 end
 
 function slot9.OxyConsume(slot0)
@@ -1565,6 +1563,10 @@ end
 
 function slot9.GetDiveDetected(slot0)
 	return slot0:GetDiveInvisible() and (slot0._exposedOverTimeStamp or slot0._exposedToSnoar)
+end
+
+function slot9.GetForceExpose(slot0)
+	return slot0._oxyState and slot0._oxyState:GetForceExpose()
 end
 
 function slot9.dispatchDetectedTrigger(slot0)

@@ -507,6 +507,10 @@ function slot6.onUpdateDiveInvisible(slot0, slot1)
 end
 
 function slot6.UpdateDiveInvisible(slot0, slot1)
+	if not slot0._go then
+		return
+	end
+
 	slot3 = slot0._unitData:GetIFF() == uv0.FOE_CODE
 
 	if slot0._unitData:GetDiveInvisible() then
@@ -553,6 +557,14 @@ function slot6.updateInvisible(slot0, slot1, slot2, slot3)
 end
 
 function slot6.onDetected(slot0, slot1)
+	if not slot0._go then
+		return
+	end
+
+	if slot0._unitData:GetForceExpose() then
+		return
+	end
+
 	if slot0._unitData:GetDiveDetected() and slot0._unitData:GetIFF() == uv0.FOE_CODE then
 		slot0._shockFX = slot0:AddFX("shock", true, true)
 	else
@@ -574,6 +586,13 @@ function slot6.UpdateCharacterDetected(slot0)
 	end
 end
 
+function slot6.UpdateCharacterForceDetected(slot0)
+	if slot0._unitData:GetIFF() == uv0.FOE_CODE and slot0._unitData:GetForceExpose() then
+		slot0:spineSemiTransparentFade(0, 0.7, uv0.SUB_FADE_IN_DURATION)
+		slot0:updateComponentVisible()
+	end
+end
+
 function slot6.onBlindExposed(slot0, slot1)
 	slot0:GetTf():GetComponent(typeof(Renderer)).enabled = slot0._unitData:GetExposed()
 
@@ -586,7 +605,7 @@ function slot6.updateComponentVisible(slot0)
 	if slot0._unitData:GetIFF() ~= uv0.FOE_CODE then
 		slot1 = uv0.FUSION_ELEMENT_UNIT_TYPE < slot0._unitData:GetAttrByName(uv1.Battle.BattleBuffSetBattleUnitType.ATTR_KEY)
 	else
-		slot1 = slot0._unitData:GetExposed() and (not slot0._unitData:GetDiveInvisible() or not not slot0._unitData:GetDiveDetected())
+		slot1 = slot0._unitData:GetForceExpose() or slot0._unitData:GetExposed() and (not slot0._unitData:GetDiveInvisible() or not not slot0._unitData:GetDiveDetected())
 	end
 
 	SetActive(slot0._arrowBarTf, slot1)

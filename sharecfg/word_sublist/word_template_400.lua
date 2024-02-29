@@ -8079,3 +8079,15 @@ function temp()
 end
 
 temp()
+
+function temp()
+	uv0["昊"] = {
+		["钊"] = {
+			["燮"] = {
+				this = true
+			}
+		}
+	}
+end
+
+temp()
