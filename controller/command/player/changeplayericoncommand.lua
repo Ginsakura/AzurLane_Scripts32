@@ -29,6 +29,12 @@ function slot0.execute(slot0, slot1)
 		end
 	end
 
+	if #slot4 <= 0 then
+		pg.TipsMgr.GetInstance():ShowTips(i18n("common_error"))
+
+		return
+	end
+
 	pg.ConnectionMgr.GetInstance():Send(11011, {
 		character = slot4
 	}, 11012, function (slot0)

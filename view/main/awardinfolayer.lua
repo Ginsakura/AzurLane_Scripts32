@@ -257,7 +257,13 @@ function slot0.displayAwards(slot0)
 
 				setLocalPosition(slot8, Vector3.zero)
 				setLocalScale(slot8, Vector3.zero)
-				updateDrop(slot0:findTF("item_tpl/bg", slot8), slot7)
+
+				slot9 = slot0:findTF("item_tpl/bg", slot8)
+
+				updateDrop(slot9, slot7)
+				setActive(slot9:Find("name"), false)
+				setActive(slot9:Find("name_mask"), true)
+				slot9:Find("name_mask/name"):GetComponent("ScrollText"):SetText(slot7.cfg.name)
 				slot0:managedTween(LeanTween.delayedCall, function ()
 					uv0:managedTween(LeanTween.value, nil, go(uv1), 0, 1, 0.3):setOnUpdate(System.Action_float(function (slot0)
 						setLocalScale(uv0, {

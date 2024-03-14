@@ -45,6 +45,8 @@ function slot0.OnInit(slot0)
 	onButton(slot0, slot0.descPanel, function ()
 		uv0:closeDescPanel()
 	end, SFX_PANEL)
+	setText(slot0:findTF("desc/frame/atttr_panel/abilitys/title/Text"), i18n("commander_subtile_ablity"))
+	setText(slot0:findTF("desc/frame/atttr_panel/talents/title/Text"), i18n("commander_subtile_talent"))
 end
 
 function slot0.Update(slot0, slot1)

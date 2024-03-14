@@ -1540,6 +1540,21 @@ slot0.CaclulateAirAssistReloadMax = slot15
 
 function slot15(slot0, slot1, slot2, slot3)
 	slot4 = slot1.arg_list
+	slot5 = slot4.tagOnly
+
+	if slot5 then
+		slot6 = slot3
+		slot5 = slot3.ContainsLabelTag
+		slot7 = slot4.tagOnly
+		slot5 = slot5(slot6, slot7)
+
+		if not slot5 then
+			slot5 = false
+
+			return slot5
+		end
+	end
+
 	slot5 = uv0
 	slot5 = slot5.DOT_CONFIG
 	slot6 = slot4.dotType
@@ -1663,6 +1678,152 @@ function slot15(slot0, slot1, slot2)
 end
 
 slot0.CaclulateDOTDamageEnhanceRate = slot15
+
+function slot15(slot0, slot1)
+	slot2 = ys
+	slot2 = slot2.Battle
+	slot2 = slot2.BattleDataFunction
+	slot2 = slot2.GetMetaBossTemplate
+	slot3 = slot0
+	slot2 = slot2(slot3)
+	slot3 = type
+	slot4 = slot2.state
+	slot3 = slot3(slot4)
+
+	if slot3 == "string" then
+		slot3 = 0
+
+		return slot3
+	end
+
+	slot3 = slot2.state
+	slot4 = os
+	slot4 = slot4.time
+	slot5 = {}
+	slot6 = slot3[1]
+	slot6 = slot6[1]
+	slot6 = slot6[1]
+	slot5.year = slot6
+	slot6 = slot3[1]
+	slot6 = slot6[1]
+	slot6 = slot6[2]
+	slot5.month = slot6
+	slot6 = slot3[1]
+	slot6 = slot6[1]
+	slot6 = slot6[3]
+	slot5.day = slot6
+	slot6 = slot3[1]
+	slot6 = slot6[2]
+	slot6 = slot6[1]
+	slot5.hour = slot6
+	slot6 = slot3[1]
+	slot6 = slot6[2]
+	slot6 = slot6[2]
+	slot5.minute = slot6
+	slot6 = slot3[1]
+	slot6 = slot6[2]
+	slot6 = slot6[3]
+	slot5.second = slot6
+	slot4 = slot4(slot5)
+	slot5 = os
+	slot5 = slot5.time
+	slot6 = {}
+	slot7 = slot3[2]
+	slot7 = slot7[1]
+	slot7 = slot7[1]
+	slot6.year = slot7
+	slot7 = slot3[2]
+	slot7 = slot7[1]
+	slot7 = slot7[2]
+	slot6.month = slot7
+	slot7 = slot3[2]
+	slot7 = slot7[1]
+	slot7 = slot7[3]
+	slot6.day = slot7
+	slot7 = slot3[2]
+	slot7 = slot7[2]
+	slot7 = slot7[1]
+	slot6.hour = slot7
+	slot7 = slot3[2]
+	slot7 = slot7[2]
+	slot7 = slot7[2]
+	slot6.minute = slot7
+	slot7 = slot3[2]
+	slot7 = slot7[2]
+	slot7 = slot7[3]
+	slot6.second = slot7
+	slot5 = slot5(slot6)
+	slot6 = os
+	slot6 = slot6.difftime
+	slot7 = slot5
+	slot8 = slot4
+	slot6 = slot6(slot7, slot8)
+	slot7 = math
+	slot7 = slot7.floor
+	slot8 = slot6 / 86400
+	slot7 = slot7(slot8)
+	slot8 = math
+	slot8 = slot8.floor
+	slot9 = os
+	slot9 = slot9.difftime
+	slot10 = pg
+	slot10 = slot10.TimeMgr
+	slot10 = slot10.GetInstance
+	slot10 = slot10()
+	slot11 = slot10
+	slot10 = slot10.GetServerTime
+	slot10 = slot10(slot11)
+	slot11 = slot4
+	slot9 = slot9(slot10, slot11)
+	slot9 = slot9 / 86400
+	slot8 = slot8(slot9)
+	slot9 = pg
+	slot9 = slot9.gameset
+	slot9 = slot9.world_metaboss_supportattack
+	slot9 = slot9.description
+	slot10 = slot9[1]
+	slot11 = slot9[2]
+	slot11 = slot7 - slot11
+	slot12 = slot9[3]
+	slot13 = slot9[4]
+	slot14 = slot9[5]
+	slot15 = ys
+	slot15 = slot15.Battle
+	slot15 = slot15.BattleDataFunction
+	slot15 = slot15.GetMetaBossLevelTemplate
+	slot16 = slot0
+	slot17 = slot1
+	slot15 = slot15(slot16, slot17)
+	slot16 = slot15.hp
+	slot17 = math
+	slot17 = slot17.floor
+	slot18 = slot16 * slot12
+	slot18 = slot18 / slot14
+	slot19 = 0.5 * slot13
+	slot19 = 1 + slot19
+	slot18 = slot18 / slot19
+	slot19 = slot11 - slot10
+	slot18 = slot18 / slot19
+	slot19 = math
+	slot19 = slot19.min
+	slot20 = slot8 - slot10
+	slot20 = slot20 + 1
+	slot21 = slot11 - slot10
+	slot19 = slot19(slot20, slot21)
+	slot18 = slot18 * slot19
+	slot17 = slot17(slot18)
+	slot18 = math
+	slot18 = slot18.random
+	slot19 = math
+	slot19 = slot19.floor
+	slot20 = slot13 * slot17
+	slot18 = slot18(slot19(slot20))
+	slot19 = slot17 + slot18
+
+	return slot19
+end
+
+slot0.CaclulateMetaDotaDamage = slot15
 
 function slot15(slot0)
 	slot1 = uv0

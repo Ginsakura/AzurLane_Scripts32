@@ -352,11 +352,7 @@ function slot0.updateImport(slot0, slot1, slot2)
 	setActive(slot0.important, true)
 
 	for slot7, slot8 in ipairs(slot1) do
-		table.insert({}, {
-			type = slot8[1],
-			id = slot8[2],
-			count = slot8[3]
-		})
+		table.insert({}, Drop.Create(slot8))
 	end
 
 	for slot7 = 1, slot0.grid.childCount do

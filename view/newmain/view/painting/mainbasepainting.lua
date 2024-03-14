@@ -150,17 +150,11 @@ function slot0.TriggerEventAtFirstTime(slot0)
 end
 
 function slot0.OnFirstTimeTriggerEvent(slot0)
-	function slot1(slot0)
-		uv0:_TriggerEvent(slot0)
-	end
-
-	if slot0.ship:GetSkinConfig().spine_use_live2d == 1 and slot0.live2dChar then
-		return
-	end
-
 	if getProxy(PlayerProxy):getFlag("login") then
 		getProxy(PlayerProxy):setFlag("login", nil)
-		slot1("event_login")
+		function (slot0)
+			uv0:_TriggerEvent(slot0)
+		end("event_login")
 	elseif getProxy(PlayerProxy):getFlag("battle") then
 		getProxy(PlayerProxy):setFlag("battle", nil)
 		slot1("home")

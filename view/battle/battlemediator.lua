@@ -773,7 +773,7 @@ function slot0.GenBattleData(slot0)
 		slot1.MapAidSkills = {}
 
 		if slot10:IsSelf() then
-			slot18, slot1.WorldBossSupportDays, slot20 = slot7.GetSupportValue()
+			slot18, slot19, slot20 = slot7.GetSupportValue()
 
 			if slot18 then
 				table.insert(slot1.MapAidSkills, {
