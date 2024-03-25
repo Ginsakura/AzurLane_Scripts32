@@ -151,6 +151,30 @@ function slot0.updateShips(slot0, slot1)
 			table.insert(uv0[slot1:getTeamType()], slot1)
 		end
 	end)
+	slot0:ResortShips()
+end
+
+function slot0.ResortShips(slot0)
+	_.each({
+		TeamType.Vanguard,
+		TeamType.Main,
+		TeamType.Submarine
+	}, function (slot0)
+		slot1 = uv0[slot0]
+		slot2 = {}
+
+		table.Ipars(slot1, function (slot0, slot1)
+			uv0[slot1] = slot0
+		end)
+		table.sort(slot1, CompareFuncs({
+			function (slot0)
+				return slot0.hpRant > 0 and 0 or 1
+			end,
+			function (slot0)
+				return uv0[slot0]
+			end
+		}))
+	end)
 end
 
 function slot0.getTeamByName(slot0, slot1)
@@ -203,6 +227,8 @@ function slot0.updateShipHp(slot0, slot1, slot2)
 	if slot0.ships[slot1] then
 		slot3.hpChange = slot2 - slot3.hpRant
 		slot3.hpRant = slot2
+
+		slot0:ResortShips()
 	end
 end
 
@@ -258,6 +284,8 @@ function slot0.containsShip(slot0, slot1)
 end
 
 function slot0.replaceShip(slot0, slot1, slot2)
+	errorMsg("ChapterFleet replaceShip function used")
+
 	if slot0.ships[slot1] and not slot0.ships[slot2.id] then
 		slot3 = slot0.ships[slot1]
 
@@ -286,6 +314,8 @@ function slot0.replaceShip(slot0, slot1, slot2)
 end
 
 function slot0.addShip(slot0, slot1)
+	errorMsg("ChapterFleet addShip function used")
+
 	if not slot0.ships[slot1.id] and slot0:fetchShipVO(slot1.id) then
 		slot2.hpRant = slot1.hp_rant
 
@@ -293,11 +323,15 @@ function slot0.addShip(slot0, slot1)
 			table.insert(slot3, slot2)
 
 			slot0.ships[slot2.id] = slot2
+
+			slot0:ResortShips()
 		end
 	end
 end
 
 function slot0.removeShip(slot0, slot1)
+	errorMsg("ChapterFleet removeShip function used")
+
 	slot0.ships[slot1] = nil
 
 	for slot6 = 1, #{
@@ -700,13 +734,6 @@ function slot0.getSummonCost(slot0)
 	return _.reduce(slot0:getShips(false), 0, function (slot0, slot1)
 		return slot0 + slot1:getEndBattleExpend()
 	end)
-end
-
-function slot0.DealDMG2Ships(slot0, slot1)
-	for slot5, slot6 in pairs(slot0.ships) do
-		slot6.hpRant = math.clamp(slot6.hpRant - slot1, 0, 10000)
-		slot6.hpChange = (slot6.hpChange or 0) + slot6.hpRant - slot6.hpRant
-	end
 end
 
 function slot0.getMapAura(slot0)
